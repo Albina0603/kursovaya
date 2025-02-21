@@ -1,10 +1,12 @@
 import React from "react";
 import { Navbar } from "@/components/navbar";
 import TodoistClone from "@/components/TodoistClone";
-import { getData } from "@/actions/todoAction";
+import { getData, UserEmail } from "@/actions/todoAction";
 
 export default async function Dashboard() {
-  const data = await getData();
+
+  
+  const data = await getData(userEmail);
 
   return (
     <div className="min-h-screen bg-gray-100">

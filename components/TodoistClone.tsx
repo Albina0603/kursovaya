@@ -23,9 +23,9 @@ export default function TodoistClone({ todos }: Props) {
   const [tasks, setTasks] = useState<todoType[]>(todos);
 
   if (!session) return <div>Please log in to see your tasks</div>;
-
+  
   const addTask = (text: string) => {
-    const userEmail = session?.user.email;
+   const userEmail = session?.user.email;
    const id = (tasks.at(-1)?.id || 0) + 1;
    setTasks([...tasks, { id: id, text, completed: false, isEditing: false }]);
    addTodo(id, text, userEmail);

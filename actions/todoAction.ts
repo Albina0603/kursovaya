@@ -6,10 +6,8 @@ import { todo } from "@/db/schema";
 
 
 
-export const getData = async () => {
-  const data = await db.select().from(todo);
-  return data;
-};
+let userg = "asd"
+
 
 export const addTodoTodo = async (id: number, text: string, user:string) => {
   await db.insert(todo).values({
@@ -17,6 +15,14 @@ export const addTodoTodo = async (id: number, text: string, user:string) => {
     text: text,
     user:user,
   });
+  userg = user
+};
+
+console.log(userg)
+
+export const getData = async (userEmail: string) => {
+  const data = await db.select().from(todo).where(eq(todo.user, userEmail));
+  return data;
 };
 export const addTodo = async (id: number, text: string, userEmail: string | undefined) => {
   if (!userEmail) {
